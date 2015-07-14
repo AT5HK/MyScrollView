@@ -10,8 +10,8 @@
 
 @interface MyScrollView : UIView
 
+@property (nonatomic) UIPanGestureRecognizer *panGest;
 
-@property (nonatomic) UIPanGestureRecognizer *pan;
 @property (nonatomic) CGSize contentSize;
 
 @end

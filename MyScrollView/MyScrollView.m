@@ -10,13 +10,38 @@
 
 @implementation MyScrollView
 
-- (instancetype)init
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super init];
+    self = [super initWithCoder:coder];
     if (self) {
-        self.contentSize = CGSizeMake(600, 200);
+        self.contentSize = CGSizeMake(0, 200);
+        self.panGest = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panAction:)];
+        [self addGestureRecognizer:self.panGest];
     }
     return self;
+}
+
+- (void)panAction:(id)sender {
+    UIPanGestureRecognizer *panning = sender;
+    CGPoint point = [panning locationInView:self];
+    NSLog(@"asd");
+    if (self.contentSize.height > self.bounds.origin.y) {
+        if (point.y > 300) {
+            CGRect frame = self.bounds;
+            frame.origin.y += 1;
+            self.bounds = frame;
+            NSLog(@"%@",NSStringFromCGRect(self.bounds));
+        }
+        else{
+            CGRect frame = self.bounds;
+            frame.origin.y -= 1;
+            self.bounds = frame;
+            NSLog(@"%@",NSStringFromCGRect(self.bounds));
+        }
+    }
+    else {
+        NSLog(@"the views bounds is greater then set height");
+    }
 }
 
 /*

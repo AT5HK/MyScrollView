@@ -10,11 +10,6 @@
 #import "MyScrollView.h"
 
 @interface ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet MyScrollView *myScrollView;
-
-@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *pan;
-@property (nonatomic) CGSize contentSize;
-- (IBAction)panAction:(id)sender;
 
 @end
 
